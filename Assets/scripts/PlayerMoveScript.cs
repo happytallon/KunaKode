@@ -4,25 +4,41 @@ using UnityEngine;
 
 public class PlayerMoveScript : MonoBehaviour
 {	
-	public GameObject hook;
-	public int shootForce;
+	public GameObject hookPrefab;
+	public int hookSpeed;
+
 	private Rigidbody2D rigidbody;	
+
+	private GameObject hook;
+	private Vector2 hookTarget;
+	
 	void Start () {
 		rigidbody = GetComponent<Rigidbody2D>();
+		hookTarget = transform.position;
 	}
 	
-	void Update () {
+	void FixedUpdate () {
 		var x = Input.GetAxis("Horizontal");
 		rigidbody.velocity = new Vector2(x, 0) * 5;
 
 		if(Input.GetButtonDown("Fire1")){
-			Debug.Log("111");
-			if(GameObject.Find("Hook") != null) return;
+ 			GameObject projectile = Instantiate( hookPrefab, transform.position, Quaternion.identity);
 
-			Vector2 direction = Input.mousePosition - transform.position;
- 			direction.Normalize();
- 			GameObject projectile = Instantiate( hook, transform.position, Quaternion.identity);
- 			projectile.GetComponent<Rigidbody2D>().velocity = direction * shootForce;
+			//Rotation
+			Vector3 dir = Input.mousePosition - Camera.main.WorldToScreenPoint(transform.position);
+     		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+     		projectile.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+			//Movement
+			//Debug.Log(projectile.transform.forward);
+			Vector3 shootDirection;
+ 			shootDirection = Input.mousePosition;
+ 			shootDirection.z = 0.0f;
+ 			shootDirection = Camera.main.ScreenToWorldPoint(shootDirection);
+ 			shootDirection = shootDirection-transform.position;
+ 			//...instantiating the rocket
+ 			//Rigidbody2D bulletInstance = Instantiate(rocket, transform.position, Quaternion.Euler(new Vector3(0,0,0))) as Rigidbody2D;
+ 			projectile.GetComponent<Rigidbody2D>().velocity = new Vector2(shootDirection.x * hookSpeed, shootDirection.y * hookSpeed);
 		}
 	}
 }
