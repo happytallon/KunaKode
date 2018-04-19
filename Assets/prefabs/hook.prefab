@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212230016577316946}
   - component: {fileID: 50140325317537830}
   - component: {fileID: 61996426162343022}
+  - component: {fileID: 114085261225919342}
   m_Layer: 0
   m_Name: hook
   m_TagString: Untagged
@@ -53,7 +54,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -87,6 +88,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.25}
   m_EdgeRadius: 0
+--- !u!114 &114085261225919342
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1533142355577302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95a23eafb750a904695d132f98072f74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RopePrefab: {fileID: 1010031363010950, guid: a247077af81bbf24eacbc33ff6c2502b, type: 2}
 --- !u!212 &212230016577316946
 SpriteRenderer:
   m_ObjectHideFlags: 1

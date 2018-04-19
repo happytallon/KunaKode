@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hookPrefab: {fileID: 1533142355577302, guid: 2cf0fd170277f584ebcf159be9628a09, type: 2}
-  hookSpeed: 5
+  hookSpeed: 10
 --- !u!212 &212424401067880556
 SpriteRenderer:
   m_ObjectHideFlags: 1
