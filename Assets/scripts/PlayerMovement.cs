@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour {
 	
 	void Update(){		
 		if(Input.GetKeyDown(KeyCode.Space)){
-			Debug.Log("lol");
 			rigidbody.AddForce(new Vector2(0, 250));
 		}
 	}
