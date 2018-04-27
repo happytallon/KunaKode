@@ -12,17 +12,20 @@ public class GrapplingHook : MonoBehaviour {
 	public LayerMask mask;
 	public float step = 0.2f;
 
+	private PlayerMovement _playerMovement;
+	private Rigidbody2D rigidbody;
 	
 	// Use this for initialization
 	void Start () {
 		joint = GetComponent<DistanceJoint2D> ();
 		joint.enabled = false;
 		line.enabled = false;
+		_playerMovement = GetComponent<PlayerMovement>();
+		rigidbody = GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
 		if(joint.distance > 1f)
 			joint.distance -=step;
 		else {
@@ -30,6 +33,11 @@ public class GrapplingHook : MonoBehaviour {
 			joint.enabled = false;
 		}
 
+		Debug.Log(rigidbody.velocity);
+
+		if(Input.GetMouseButton(1)){
+			line.SetPosition(0, transform.position);
+		}
 		if (Input.GetMouseButtonDown(1)) {
 			targetPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			targetPos.z = 0;
@@ -40,20 +48,20 @@ public class GrapplingHook : MonoBehaviour {
 				joint.enabled = true;
 				joint.connectedBody=hit.collider.gameObject.GetComponent<Rigidbody2D>();
 				joint.connectedAnchor=hit.point - new Vector2(hit.collider.transform.position.x, hit.collider.transform.position.y);
-				joint.distance = Vector2.Distance(transform.position, hit.point);
+				joint.distance = Vector2.Distance(transform.position, hit.point) * (_playerMovement.isJumping ? 1f : 0.9f);
 
 				line.enabled = true;
 				line.SetPosition(0,transform.position);
 				line.SetPosition(1, hit.point);
 				line.GetComponent<roperatio>().grabPos = hit.point;
+
+				_playerMovement.isHanging = true;
 			}			
-		}
-		if(Input.GetMouseButton(1)){
-			line.SetPosition(0, transform.position);
-		}
+		}	
 		if(Input.GetMouseButtonUp(1)){
 			joint.enabled = false;
 			line.enabled = false;
+			_playerMovement.isHanging = false;
 		}
 	}
 }

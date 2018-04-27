@@ -157,6 +157,20 @@ Prefab:
       propertyPath: line
       value: 
       objectReference: {fileID: 1630744223}
+    - target: {fileID: 1369374432033826, guid: 6d137a7e8ff99cf48b54d532b9ef689d, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 232932630158074782, guid: 6d137a7e8ff99cf48b54d532b9ef689d,
+        type: 2}
+      propertyPath: m_EnableCollision
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 50313530661728290, guid: 6d137a7e8ff99cf48b54d532b9ef689d,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6d137a7e8ff99cf48b54d532b9ef689d, type: 2}
   m_IsPrefabParent: 0
@@ -172,7 +186,7 @@ GameObject:
   - component: {fileID: 472037084}
   m_Layer: 0
   m_Name: ceil
-  m_TagString: Untagged
+  m_TagString: Ceil
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -303,6 +317,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1736856952629754, guid: f8f19f856e220d54990688873c9101b7, type: 2}
+      propertyPath: m_TagString
+      value: Hook
+      objectReference: {fileID: 0}
+    - target: {fileID: 50092202519676228, guid: f8f19f856e220d54990688873c9101b7,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f8f19f856e220d54990688873c9101b7, type: 2}
   m_IsPrefabParent: 0
@@ -380,6 +403,10 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 527383508}
+    - target: {fileID: 1050140833800560, guid: 0dcec42dc10ba274b91cc73e51727ce0, type: 2}
+      propertyPath: m_TagString
+      value: Line
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0dcec42dc10ba274b91cc73e51727ce0, type: 2}
   m_IsPrefabParent: 0
@@ -400,7 +427,7 @@ GameObject:
   - component: {fileID: 1727881634}
   m_Layer: 0
   m_Name: floor
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
