@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
 	private bool running = false;
 	private bool _hanging = false; public bool isHanging {get {return _hanging;} set{_hanging = value;}}
 
+	private float horizontalSpeed;
+
 	void Start () {
 		rigidbody = GetComponent<Rigidbody2D>();
 	}
@@ -27,11 +29,25 @@ public class PlayerMovement : MonoBehaviour
 			running = true;
 		if(running && Input.GetKeyUp(KeyCode.LeftShift))
 			running = false;
+
+		horizontalSpeed = Input.GetAxis("Horizontal");
 	}
 
 	void FixedUpdate () {
-		var x = Input.GetAxis("Horizontal");
-		rigidbody.velocity = new Vector2(x * speed * (running ? runningModifier : 1), rigidbody.velocity.y);
+		if(Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D)){
+			if(!_hanging) {
+				rigidbody.velocity = new Vector2(horizontalSpeed * speed * (running ? runningModifier : 1), rigidbody.velocity.y);
+				rigidbody.gravityScale = 1f;
+			}
+			else{
+				if(rigidbody.velocity.y < 0) {
+					rigidbody.gravityScale += 5f * Time.deltaTime;
+				}
+				else {
+					rigidbody.gravityScale -= 5f * Time.deltaTime;
+				}
+			}
+		}
 	}
 	
 	void OnCollisionEnter2D(Collision2D col)

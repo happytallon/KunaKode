@@ -49,6 +49,7 @@ public class GrapplingHook : MonoBehaviour {
 				joint.connectedBody=hit.collider.gameObject.GetComponent<Rigidbody2D>();
 				joint.connectedAnchor=hit.point - new Vector2(hit.collider.transform.position.x, hit.collider.transform.position.y);
 				joint.distance = Vector2.Distance(transform.position, hit.point) * (_playerMovement.isJumping ? 1f : 0.9f);
+				
 
 				line.enabled = true;
 				line.SetPosition(0,transform.position);
